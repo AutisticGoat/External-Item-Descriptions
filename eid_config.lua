@@ -6,13 +6,13 @@ EID.UserConfig = {
 	--						Chinese = "zh_cn"				SPECIAL THANKS TO Xheepey87, frto027
 	--						Czech = "cs_cz"					SPECIAL THANKS TO domcizzz
 	--						Dutch = "nl_nl"					SPECIAL THANKS TO SomethingMax
-	--						English = "en_us", "en_us_detailed" (More detailed descriptions)
-	--						French = "fr"					SPECIAL THANKS TO Nicolas Delvaux
+	--						English = "en_us"				SPECIAL THANKS TO everyone!
+	--						French = "fr"					SPECIAL THANKS TO biobak
 	--						German = "de"					SPECIAL THANKS TO Jake
 	--						Greek = "el_gr"					SPECIAL THANKS TO vanillarat
 	--						Italian = "it"					SPECIAL THANKS TO Denkishi, 2G
 	--						Japanese = "ja_jp"				SPECIAL THANKS TO prefab
-	--						Korean = "ko_kr"				SPECIAL THANKS TO Blackcreamtea, 미카
+	--						Korean = "ko_kr"				SPECIAL THANKS TO Blackcreamtea, 리셰(kohashiwakaba)
 	--						Polish = "pl"					SPECIAL THANKS TO Rickyy
 	--						Portuguese = "pt"				SPECIAL THANKS TO Marcelino Cruz
 	--						Brazilian Portuguese = "pt_br"	SPECIAL THANKS TO Marcelino Cruz
@@ -91,9 +91,13 @@ EID.UserConfig = {
 	-- Current warnings are: Achievements are locked, outdated game version, and potentially having inaccurate modded Bag of Crafting recipes
 	-- Default = false
 	["DisableStartOfRunWarnings"] = false,
-	
+	-- ColorblindMode
+	-- Values: 0 = Off, 1 = Protanopia (red weak), 2 = Deuteranopia (green weak), 3 = Tritanopia (blue weak)
+	-- Default = 0
+	["ColorblindMode"] = 0,
+
 	---------- Co-op / Multiple Descriptions -----------
-	
+
 	-- Allow P2/P3/P4 to display descriptions when in Co-op mode
 	-- Default = true
 	["CoopDescriptions"] = true,
@@ -104,7 +108,7 @@ EID.UserConfig = {
 	-- Default = false
 	["DisplayAllNearby"] = false,
 	-- Any descriptions displayed beyond the first one will use the "Local" display mode
-	
+
 	-- Set the max number of descriptions to display per frame
 	-- Set to 1 if you don't want any Local Mode descriptions printed in co-op
 	-- Default = 99
@@ -124,19 +128,19 @@ EID.UserConfig = {
 	-- Changes the position of the text in local mode, relative to the described object to be centered. Set to false to make it left-aligned
 	-- Default = true
 	["LocalModeCentered"] = true,
-	
+
 	---------- Icons -----------
-	
+
 	-- Change the size of icons if available
 	-- Possible values: "default", "big", "small"
 	-- Default = "default"
 	["MarkupSize"] = "default",
-	
+
 	-- If true, print the icon of the stat being affected in a stat change after the up/down arrow
 	-- For example, "↑ {{Speed}} +0.3 Speed up"
 	-- Default = false
 	["StatChangeIcons"] = false,
-	
+
 	-- If true, stat and basic pickup bulletpoint icons will be drawn when relevant
 	-- For example, "{{Battery}} +1 charge when you get hit"
 	-- Default = true
@@ -186,6 +190,17 @@ EID.UserConfig = {
 	-- REPENTANCE ONLY!!!
 	-- Default = true
 	["ShowQuality"] = true,
+	-- Enables or disables collectible's item pool when collected after item name
+	-- REPENTANCE ONLY!!!
+	-- Default = false
+	["ShowItemPoolIcon"] = false,
+	-- Enables or disables collectible's item pool name when collected below item name
+	-- REPENTANCE ONLY!!!
+	-- Default = false
+	["ShowItemPoolText"] = false,
+	-- Set the item pool for collectible text color
+	-- Default = "ColorSilver"
+	["ItemPoolTextColor"] = "ColorSilver",
 	-- Set the mod indicator display
 	-- Default = "Both"
 	["ModIndicatorDisplay"] = "None",
@@ -257,13 +272,12 @@ EID.UserConfig = {
 	["ShowUnidentifiedPillDescriptions"] = false,
 
 	---------- Glitched Items ---------
-  
+
 	-- Toggle Display of Glitched Item (TMTRAINER) descriptions
-	-- Note: The --luadebug launch option is required for more detailed glitched item descriptions
-	-- This option allows mods to have access to your files, breaks some mods, and should be turned on at your own risk!
-	-- Without --luadebug, you still can see the effect the item will have on your Hearts, and what stats it might modify
-	-- Default = false, unless luadebug is on
-	["DisplayGlitchedItemInfo"] = debug and true or false,
+	-- Note: Installing REPENTOGON is required for more detailed glitched item descriptions
+	-- Without REPENTOGON, you still can see the effect the item will have on your Hearts, and what stats it might modify
+	-- Default = false
+	["DisplayGlitchedItemInfo"] = false,
 
 	---------- Sacrifice Room ----------
 
@@ -294,36 +308,55 @@ EID.UserConfig = {
 	-- REPENTANCE ONLY!!!
 	-- Default = true
 	["DisplayCraneInfo"] = true,
-	
+
 	---------- Void Stat Increases ----------
 	-- Toggle display of what stats will increase on Void absorption
 	-- Default = false
 	["DisplayVoidStatInfo"] = false,
-	
+
+	---------- Flip Items ----------
+	-- If enabled, displays informations about the "ghost" item that is available for the other player when using the "Flip" item (T-Lazarus)
+	-- REPENTANCE ONLY!!!
+	-- Default = true
+	["DisplayFlipItemDescriptions"] = true,
+
 	---------- Item Reminder Description ------------
-	-- Enable/Disable item reminder feature. 
+	-- Enable/Disable item reminder feature.
 	-- Hold Map (or the button action chosen below) to show a description of your active item's effect, recently picked up items, and things like Teleport 2.0's destination and Void's absorbed items
 	["ItemReminderEnabled"] = true,
+	-- Changes the display mode of the item reminder feature.
+	-- Options: "All" (Overview + scrollable item categories), "NoOverview" (Only scrollable item categories), "Classic" (only overview page)
+	-- Default = "All"
+	["ItemReminderDisplayMode"] = "All",
+	-- Disable inputs while Item Reminder is visible
+	-- Default = false
+	["ItemReminderDisableInputs"] = false,
 	-- Set the keybinding that's held to show the Item Reminder description, Flip/Spindown Dice preview descriptions, and interacting with the Bag of Crafting recipe list
 	-- Look into the AB+ or Repentance documentation for the key names here: https://wofsauge.github.io/IsaacDocs/rep/enums/ButtonAction.html
 	-- Default = ButtonAction.ACTION_MAP
 	["BagOfCraftingToggleKey"] = ButtonAction.ACTION_MAP,
-	-- Show recently acquired item descriptions in the Item Reminder (good for Curse of the Blind!)
-	-- Default = 1
-	["ItemReminderShowRecentItem"] = 1,
-	-- Show your active item description(s) in the Item Reminder
-	-- Default = 1, max = 2
-	["ItemReminderShowActiveDesc"] = 1,
-	-- Show your pocket item (card, pill, active) description in the Item Reminder
-	-- Default = 1, max = 4 (2 in AB+)
-	["ItemReminderShowPocketDesc"] = 1,
-	-- Show your trinket description(s) in the Item Reminder
-	-- Default = 2, max = 2
-	["ItemReminderShowTrinketDesc"] = 2,
-	-- Show your next Poop Spell's description in the Item Reminder
-	-- REPENTANCE ONLY!!!
-	-- Default = 1, max = 6
-	["ItemReminderShowPoopDesc"] = 1,
+	-- Set the keybinding that is used to scroll thru the categories in the left direction
+	-- Look into the AB+ or Repentance documentation for the key names here: https://wofsauge.github.io/IsaacDocs/rep/enums/ButtonAction.html
+	-- Default = ButtonAction.ACTION_SHOOTLEFT
+	["ItemReminderNavigateLeftButton"] = ButtonAction.ACTION_SHOOTLEFT,
+	-- Set the keybinding that is used to scroll thru the categories in the right direction
+	-- Look into the AB+ or Repentance documentation for the key names here: https://wofsauge.github.io/IsaacDocs/rep/enums/ButtonAction.html
+	-- Default = ButtonAction.ACTION_SHOOTLEFT
+	["ItemReminderNavigateRightButton"] = ButtonAction.ACTION_SHOOTRIGHT,
+	-- Set the keybinding that is used to scroll thru the players or item entries in the left direction
+	-- Look into the AB+ or Repentance documentation for the key names here: https://wofsauge.github.io/IsaacDocs/rep/enums/ButtonAction.html
+	-- Default = ButtonAction.ACTION_SHOOTUP
+	["ItemReminderNavigateUpButton"] = ButtonAction.ACTION_SHOOTUP,
+	-- Set the keybinding that is used to scroll thru the players or item entries in the right direction
+	-- Look into the AB+ or Repentance documentation for the key names here: https://wofsauge.github.io/IsaacDocs/rep/enums/ButtonAction.html
+	-- Default = ButtonAction.ACTION_SHOOTDOWN
+	["ItemReminderNavigateDownButton"] = ButtonAction.ACTION_SHOOTDOWN,
+	-- Limits the number of description bullet points to be displayed on the overview page for each item
+	-- Default = 2
+	["ItemReminderOverviewHideAfterRows"] = 2,
+	-- Number of entries to display per category of the item description.
+	-- Default = 3
+	["ItemReminderMaxEntriesCount"] = 3,
 	-- Items that grant you items without saying what they are (like Zodiac, Liberty Cap) can have their current granted item revealed in the Item Reminder
 	-- Default = false
 	["ItemReminderShowHiddenInfo"] = false,
@@ -331,7 +364,18 @@ EID.UserConfig = {
 	-- Default = false
 	["ItemReminderShowRNGCheats"] = false,
 	
+	---------- Dynamic Descriptions ------------
+	-- Some descriptions can be completely different depending on what character you are, here you can disable the most extreme ones
 	
+	-- Changes Health Ups and removes healing effect text when playing as a character that can't have red health
+	-- Default = true
+	["DynamicHealthUps"] = true,
+	
+	-- As Tainted Cain, replaces pedestal descriptions with what they will turn 
+	-- REPENTANCE ONLY!!!
+	-- Default = true
+	["DisplayTCainSalvageResults"] = true,
+
 	---------- Bag of Crafting ------------
 
 	-- REPENTANCE ONLY!!!
@@ -344,10 +388,10 @@ EID.UserConfig = {
 	-- Display modes for the Bag of Crafting display
 	-- Options: "Recipe List", "Preview Only", "Item Probability", "Pickups Only"
 	-- The "Recipe List" is a detailed calculated list of recipes based on what you have available on the floor
+	-- "Learned Recipe List" only shows you recipes that you have discovered during that run, plus fixed recipes
 	-- "Preview Only" shows the description of the item you can currently craft in your bag
 	-- "Item Probability" shows percentages of what item you might get from your bag / best option on the floor, for a more intended experience
 	-- "Pickups Only" just shows the room/floor pickup count
-	-- ("Item Probability" is recommended if you have modded items)
 	-- Default = "Recipe List"
 	["BagOfCraftingDisplayRecipesMode"] = "Recipe List",
 	-- Hide the recipe list when in battle
@@ -356,6 +400,11 @@ EID.UserConfig = {
 	-- Show the text for the Hide/Preview and Recipe List hotkeys
 	-- Default = true
 	["BagOfCraftingShowControls"] = true,
+	-- Sort bag recipes by quality and then alphabetically (to prioritize the best possible crafts),
+	-- or just alphabetically (to more easily find specific items if you don't know their quality)
+	-- Options: "Quality", "Name"
+	-- Default = "Quality"
+	["BagOfCraftingSortOrder"] = "Quality",
 	-- Changes the amount of results shown in the Bag of Crafting description
 	-- Higher numbers can cause more lag!
 	-- Default = 7
@@ -374,11 +423,6 @@ EID.UserConfig = {
 	-- Display recipes as 8 icons instead of grouped ingredients
 	-- Default = false
 	["BagOfCraftingDisplayIcons"] = false,
-	-- Enable or disable basic modded item support
-	-- Only modded items with a weight of 1.0 in their item pools are supported, as we can't determine modded item pool weight
-	-- If you have a lot of modded items, it will slow down game launch
-	-- Default = true
-	["BagOfCraftingModdedRecipes"] = true,
 	-- Set the keybinding to toggle the crafting display, so you can see descriptions of items/pickups on the floor
 	-- Look into the AB+ or Repentance documentation for the key names here: https://wofsauge.github.io/IsaacDocs/rep/enums/Keyboard.html
 	-- Default = Keyboard.KEY_F3
@@ -390,13 +434,17 @@ EID.UserConfig = {
 	["CraftingHideButton"] = -1,
 	-- Set the keybinding to toggle viewing the description of the item ready to be crafted in the bag
 	-- Look into the AB+ or Repentance documentation for the key names here: https://wofsauge.github.io/IsaacDocs/rep/enums/Keyboard.html
-	-- Default = Keyboard.KEY_F3
+	-- Default = Keyboard.KEY_F4
 	["CraftingResultKey"] = Keyboard.KEY_F4,
 	-- Set the controller binding to toggle viewing the description of the item ready to be crafted in the bag
 	-- Use the controller names here: https://github.com/wofsauge/External-Item-Descriptions/blob/master/mod_config_menu.lua#L1 or a number
 	-- Of note are Controller.STICK_LEFT and Controller.STICK_RIGHT (pushing the sticks in), which aren't used in-game with default controls
 	-- Default = none (-1)
 	["CraftingResultButton"] = -1,
+	-- Set the keybinding to toggle the search feature on and off
+	-- Look into the AB+ or Repentance documentation for the key names here: https://wofsauge.github.io/IsaacDocs/rep/enums/Keyboard.html
+	-- Default = Keyboard.KEY_RIGHT_SHIFT
+	["CraftingSearchKey"] = Keyboard.KEY_RIGHT_SHIFT,
 
 
 	 ---------- Save Game Options ------------
@@ -405,6 +453,14 @@ EID.UserConfig = {
 	 -- Possible values: 0,1,2,3
 	 -- Default: 0   (Deactivate all Savegame features)
 	 ["SaveGameNumber"] = 0,
+
+	 -- Hides descriptions of items, if they are not collected in the collection page
+	 -- Default: false
+	 ["HideUncollectedItemDescriptions"] = false,
+
+	 -- Highlight items, if they need to be collected for the collection page
+	 -- Default: true
+	 ["ItemCollectionIndicator"] = true,
 
 	 -- Color in which the name of an item should be highlighted, which needs to be collected for the collection page
 	-- Color names are defined in "eid_data.lua" (line 365)
@@ -420,6 +476,20 @@ EID.UserConfig = {
 	-- Toggles the custom mouse cursor
 	-- Default = false
 	["ShowCursor"] = false,
+
+
+	---------- Repentogon ----------
+	-- The following options only affect features that require the API extention "Repentogon" to be installed.
+	-- Website: https://repentogon.com/index.html 
+
+	-- Toggles descriptions to be visible, when using the item collection page in the main menu.
+	-- Default = true
+	["RGON_ShowOnCollectionPage"] = true,
+
+	-- Toggles achievement progress descriptions for donation machines
+	-- Default = true
+	["RGON_DonationMachineDescriptions"] = true,
+
 
 	---------- Misc ----------
 
@@ -485,6 +555,7 @@ EID.DefaultConfig = {
 	["YPosition"] = 45,
 	["LineHeight"] = 11,
 	["DisplayMode"] = "default",
+	["ColorblindMode"] = 0,
 	["LocalModeSize"] = 0.5,
 	["LocalModeCentered"] = true,
 	["MarkupSize"] = "default",
@@ -514,6 +585,9 @@ EID.DefaultConfig = {
 	["DisplayTrinketInfo"] = true,
 	["ItemNameColor"] = "ColorEIDObjName",
 	["ShowQuality"] = true,
+	["ShowItemPoolIcon"] = false,
+	["ShowItemPoolText"] = false,
+	["ItemPoolTextColor"] = "ColorSilver",
 	["ModIndicatorDisplay"] = "None",
 	["ModIndicatorTextColor"] = "ColorLightOrange",
 	["ShowObjectID"] = false,
@@ -533,7 +607,7 @@ EID.DefaultConfig = {
 	["DisplayObstructedPillInfo"] = false,
 	["OnlyShowPillWhenUsedAtLeastOnce"] = false,
 	["ShowUnidentifiedPillDescriptions"] = false,
-	["DisplayGlitchedItemInfo"] = debug and true or false,
+	["DisplayGlitchedItemInfo"] = false,
 	["DisplaySacrificeInfo"] = true,
 	["DisplaySanguineInfo"] = true,
 	["PredictionSanguineBond"] = false,
@@ -541,38 +615,52 @@ EID.DefaultConfig = {
 	["DisplayBagOfCrafting"] = "always",
 	["DisplayCraneInfo"] = true,
 	["DisplayVoidStatInfo"] = false,
+	["DisplayFlipItemDescriptions"] = true,
 	["BagOfCraftingResults"] = 7,
 	["BagOfCraftingCombinationMax"] = 12,
 	["BagOfCraftingRandomResults"] = 400,
+	["BagOfCraftingSortOrder"] = "Quality",
 	["BagOfCraftingDisplayNames"] = false,
 	["BagOfCraftingDisplayIcons"] = false,
 	["BagOfCraftingHideInBattle"] = true,
 	["BagOfCraftingShowControls"] = true,
 	["BagOfCraftingDisplayRecipesMode"] = "Recipe List",
-	["BagOfCraftingModdedRecipes"] = true,
 	["CraftingHideKey"] = Keyboard.KEY_F3,
 	["CraftingHideButton"] = -1,
 	["CraftingResultKey"] = Keyboard.KEY_F4,
 	["CraftingResultButton"] = -1,
-	
+	["CraftingSearchKey"] = Keyboard.KEY_RIGHT_SHIFT,
+
 	["ItemReminderEnabled"] = true,
+	["ItemReminderDisplayMode"] = "All",
+	["ItemReminderDisableInputs"] = false,
 	["BagOfCraftingToggleKey"] = ButtonAction.ACTION_MAP,
-	["ItemReminderShowRecentItem"] = 1,
-	["ItemReminderShowActiveDesc"] = 1,
-	["ItemReminderShowPocketDesc"] = 1,
-	["ItemReminderShowTrinketDesc"] = 2,
-	["ItemReminderShowPoopDesc"] = 1,
+	["ItemReminderNavigateLeftButton"] = ButtonAction.ACTION_SHOOTLEFT,
+	["ItemReminderNavigateRightButton"] = ButtonAction.ACTION_SHOOTRIGHT,
+	["ItemReminderNavigateUpButton"] = ButtonAction.ACTION_SHOOTUP,
+	["ItemReminderNavigateDownButton"] = ButtonAction.ACTION_SHOOTDOWN,
+	["ItemReminderOverviewHideAfterRows"] = 2,
+	["ItemReminderMaxEntriesCount"] = 5,
 	["ItemReminderShowHiddenInfo"] = false,
 	["ItemReminderShowRNGCheats"] = false,
+	
+	["DynamicHealthUps"] = true,
+	["DisplayTCainSalvageResults"] = true,
 	
 	["SpindownDiceResults"] = 3,
 	["SpindownDiceDisplayID"] = false,
 	["SpindownDiceDisplayName"] = false,
 	["SpindownDiceSkipLocked"] = false,
 	["SaveGameNumber"] = 0,
+	["HideUncollectedItemDescriptions"] = false,
+	["ItemCollectionIndicator"] = true,
 	["ItemCollectionColor"] = "ColorFade",
 	["EnableMouseControls"] = false,
 	["ShowCursor"] = false,
+
+	["RGON_ShowOnCollectionPage"] = true,
+	["RGON_DonationMachineDescriptions"] = true,
+
 	["ErrorMessage"] = "[Effect not defined]",
 	["TextColor"] = "ColorEIDText",
 	["ErrorColor"] = "ColorEIDError",

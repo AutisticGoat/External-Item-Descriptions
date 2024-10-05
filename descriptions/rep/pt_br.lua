@@ -8,7 +8,7 @@
 -- FORMAT: Item ID | Name| Description
 -- '#' = starts new line of text
 
--- Portuguese (Brazil) letters: 
+-- Portuguese (Brazil) letters:
 -- ãÃ áÁ àÀ âÂ çÇ éÉ êÊ íÍ õÕ óÓ ôÔ úÚ
 
 -- Special character markup:
@@ -994,9 +994,6 @@ EID.descriptions[languageCode].horsepills={
 ---------- Glitched Item Descriptions ----------
 
 EID.descriptions[languageCode].GlitchedItemText = {
-	-- This will be appended to words to pluralize them, make it "" to not pluralize
-	pluralize = "",
-	
 	-- Item Config info
 	AddBlackHearts = "{{BlackHeart}} {1} Coração Negro",
 	AddBombs = "{{Bomb}} {1} Bomba",
@@ -1005,12 +1002,12 @@ EID.descriptions[languageCode].GlitchedItemText = {
 	AddKeys = "{{Key}} {1} Chave",
 	AddMaxHearts = "{{EmptyHeart}} {1} Contêiner de Coração",
 	AddSoulHearts = "{{SoulHeart}} {1} Coração de Alma",
-	
+
 	-- Cache Flag names
 	cacheFlagStart = "Pode afetar ",
-	[0] = "{{Damage}} Dano", "{{Tears}} Taxa de Disparo", "{{Shotspeed}} Velocidade de Disparo", "{{Range}} Alcance", "{{Speed}} Velocidade", "Efeito de Lágrima", "Cor da Lágrima", "Voo", "Tipo de Ataque", "Familiares", "{{Luck}} Sorte", "Tamanho", "Cor", "Conteúdo do Baú", 
+	[0] = "{{Damage}} Dano", "{{Tears}} Taxa de Disparo", "{{Shotspeed}} Velocidade de Disparo", "{{Range}} Alcance", "{{Speed}} Velocidade", "Efeito de Lágrima", "Cor da Lágrima", "Voo", "Tipo de Ataque", "Familiares", "{{Luck}} Sorte", "Tamanho", "Cor", "Conteúdo do Baú",
 	[16] = "Todos os Status",
-	
+
 	-- Attribute triggers
 	chain = "Então:{{CR}} ",
 	active = "Ao usar:#",
@@ -1021,7 +1018,7 @@ EID.descriptions[languageCode].GlitchedItemText = {
 	tear_fire = "Quando você disparar uma lágrima, chance de:#",
 	enemy_hit = "Ao entrar em contato com um inimigo, chance de:#",
 	room_clear = "Ao limpar a sala:#",
-	
+
 	-- Attribute effects
 	area_damage = "Causa {1} de dano em uma área ao redor de você",
 	add_temporary_effect = "Recebe {1} para a sala",
@@ -1045,7 +1042,7 @@ EID.descriptions[languageCode].GlitchedItemText = {
 	["9.-1"] = "projétil de inimigo",
 	["999.-1"] = "objeto de grade",
 	["1000.0"] = "efeito",
-	
+
 }
 
 ---------- Misc. Text ----------
@@ -1079,12 +1076,10 @@ EID.descriptions[languageCode].CraftingBestQuality = "Melhor Qualidade:"
 
 EID.descriptions[languageCode].CraftingHideKey = "Esconder:"
 EID.descriptions[languageCode].CraftingPreviewKey = "Visualizar:"
-EID.descriptions[languageCode].CraftingPreviewBackup = "!!! Se este item estiver bloqueado, ele se transformará em"
 
 EID.descriptions[languageCode].CraftingResults = "(Rolar: Segurar {{CONFIG_BoC_Toggle}} + {{ButtonY}} {{ButtonA}}, Travar: {{ButtonX}}, Atualizar: {{ButtonB}}, Redefinir a Bolsa: Hold {{ButtonRB}})"
 
 EID.descriptions[languageCode].BlankCardCharge = "Carga do Blank Card:"
-EID.descriptions[languageCode].BlankCardQCard = "Teleporta para a Sala I AM Error#Blank Card e ?-Carta serão destruídas"
 EID.descriptions[languageCode].ClearRuneCharge = "Limpar carga da Runa:"
 EID.descriptions[languageCode].PlaceboCharge = "Carga do Placebo:"
 EID.descriptions[languageCode].FlipItemToggleInfo = "(Segure {{CONFIG_BoC_Toggle}} para mostrar a descrição)"
